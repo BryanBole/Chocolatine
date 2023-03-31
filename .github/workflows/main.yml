@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  MIRROR_URL: 'git@github.com:BryanBole/chocolatine.git'
+  MIRROR_URL: 'git@github.com:BryanBole/test_chocolatine.git'
   EXECUTABLES: 'git@github.com:BryanBole/my_paint.git'
 
 jobs:
