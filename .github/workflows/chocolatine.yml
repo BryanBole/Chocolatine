@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  MIRROR_URL: "https://github.com/EpitechPromo2027/B-DOP-200-LYN-2-1-chocolatine-bryan.bole"
+  MIRROR_URL: "https://github.com/BryanBole/Chocolatine"
   EXECUTABLES: "mysh"
 
 jobs:
