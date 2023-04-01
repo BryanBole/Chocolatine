@@ -16,7 +16,7 @@ NAME = mysh
 all:    $(NAME)
 
 $(NAME):    $(OBJ)
-    gcc -o $(NAME) $(OBJ)
+    gcc -o $(NAME) $(OBJ) -lcriterion --coverage
 
 clean:
     rm -f $(OBJ)
@@ -25,9 +25,5 @@ fclean: clean
         rm -f *.a $(NAME)
 
 re:    fclean all
-
-run_tests:
-    gcc -o $(NAME) tests/test.c -lcriterion --coverage
-    ./$(NAME)
 
 .PHONY: all clean fclean re
