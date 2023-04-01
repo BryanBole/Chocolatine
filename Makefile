@@ -14,7 +14,7 @@ NAME = mysh
 CFLAGS	=	-W -Wall -Wextra -I./include -L./include -g -g3
 
 ${NAME}: ${OBJ}
-	gcc ${OBJ} -o ${NAME} ${CFLAGS}
+    gcc ${OBJ} -o ${NAME} ${CFLAGS}
 
 all: ${NAME}
 
@@ -28,7 +28,7 @@ fclean: clean
 re: fclean all
 
 run_tests:
-    gcc -o $(NAME) tests/test.c -lcriterion --coverage
+    gcc -o $(NAME) criterion.c -lcriterion --coverage
     ./$(NAME)
 
 .PHONY: all clean fclean re
