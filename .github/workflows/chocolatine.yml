@@ -7,8 +7,8 @@ on:
   pull_request:
 
 env:
-  MIRROR_URL: 'git@github.com:BryanBole/Chocolatine.git'
-  EXECUTABLES: 'mysh'
+  MIRROR_URL: "https://github.com/BryanBole/Chocolatine"
+  EXECUTABLES: "mysh"
 
 jobs:
   check_coding_style:
@@ -21,8 +21,6 @@ jobs:
       - name: Run coding style checker
         run: check.sh $(pwd) $(pwd)
   check_program_compilation:
-    env:
-      EXECUTABLES: ${{ secrets.EXECUTABLES }}
     needs:
       - check_coding_style
     runs-on: ubuntu-latest
