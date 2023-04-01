@@ -1,29 +1,36 @@
 ##
-## EPITECH PROJECT, 2022
+## EPITECH PROJECT, 2019
 ## Makefile
 ## File description:
-## Makefile
+## rtfm
 ##
 
-SRC =    main.c \
+CC			=	gcc
 
-OBJ = $(SRC:.c=.o)
+SRC			=	print.c
 
-CFLAGS    +=    -g3 -Wall -Wextra
+OBJ			=	$(SRC:.c=.o)
 
-NAME = mysh
+NAME		=	binary
 
-all:    $(NAME)
+$(NAME):	 $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
-$(NAME):    $(OBJ)
-    gcc -o $(NAME) $(OBJ) -lcriterion --coverage
+all:	$(NAME)
+
+tests_run:
+	make -C tests/
 
 clean:
-    rm -f $(OBJ)
+	rm -f $(OBJ)
+
+coverage:
+	@gcovr
 
 fclean: clean
-        rm -f *.a $(NAME)
+	rm -f $(NAME)
+	make fclean -C ./tests
 
-re:    fclean all
+re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY:	$(NAME) all clean fclean
