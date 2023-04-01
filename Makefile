@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-NAME = choco
+NAME = mysh
 
 SRC = main.c
 
