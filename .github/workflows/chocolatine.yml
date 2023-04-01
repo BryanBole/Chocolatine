@@ -24,7 +24,7 @@ jobs:
     env:
       EXECUTABLES: ${{ secrets.EXECUTABLES }}
     needs:
-      - check_program_cleanliness
+      - check_coding_style
     runs-on: ubuntu-latest
     container:
       image: epitechcontent/epitest-docker:latest
