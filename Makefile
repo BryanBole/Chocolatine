@@ -5,30 +5,29 @@
 ## Makefile
 ##
 
-SRC := $(shell find . -name "*.c")
+SRC =    main.c \
 
-OBJ := $(patsubst %.c,%.o,$(SRC))
+OBJ = $(SRC:.c=.o)
+
+CFLAGS    +=    -g3 -Wall -Wextra
 
 NAME = mysh
 
-CFLAGS	=	-W -Wall -Wextra -I./include -L./include -g -g3
+all:    $(NAME)
 
-${NAME}: ${OBJ}
-    gcc ${OBJ} -o ${NAME} ${CFLAGS}
-
-all: ${NAME}
+$(NAME):    $(OBJ)
+    gcc -o $(NAME) $(OBJ)
 
 clean:
-	rm -f ${OBJ}
+    rm -f $(OBJ)
 
 fclean: clean
-	rm -f ${NAME}
-	rm -f *.o
+        rm -f *.a $(NAME)
 
-re: fclean all
+re:    fclean all
 
 run_tests:
-    gcc -o $(NAME) criterion.c -lcriterion --coverage
+    gcc -o $(NAME) tests/test.c -lcriterion --coverage
     ./$(NAME)
 
 .PHONY: all clean fclean re
