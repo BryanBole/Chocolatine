@@ -9,7 +9,7 @@
 
 Test(test, this)
 {
-    int i = 0;
-    i++;
-    cr_assert_eq(i, 1);
+    int nb = 0;
+    nb += 1;
+    cr_assert_eq(nb, 1);
 }

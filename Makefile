@@ -1,36 +1,25 @@
 ##
-## EPITECH PROJECT, 2019
-## Makefile
+## EPITECH PROJECT, 2023
+## test_chocolatine
 ## File description:
-## rtfm
+## Makefile
 ##
 
-CC			=	gcc
+NAME = choco
 
-SRC			=	print.c
+SRC = main.c
 
-OBJ			=	$(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 
-NAME		=	binary
+all: $(NAME)
 
-$(NAME):	 $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
-
-all:	$(NAME)
-
-tests_run:
-	make -C tests/
+$(NAME):	$(OBJ)
+	gcc -o $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
 
-coverage:
-	@gcovr
+tests_run:
+	gcc -o $(NAME) tests/test.c -lcriterion --coverage 
 
-fclean: clean
-	rm -f $(NAME)
-	make fclean -C ./tests
-
-re:	fclean all
-
-.PHONY:	$(NAME) all clean fclean
+.PHONY: all clean tests_run
