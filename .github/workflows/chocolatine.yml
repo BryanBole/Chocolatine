@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  MIRROR_URL: "https://github.com/BryanBole/Chocolatine"
+  MIRROR_URL: "git@github.com:BryanBole/Chocolatine.git"
   EXECUTABLES: "mysh"
 
 jobs:
@@ -60,3 +60,4 @@ jobs:
           ${{ env.MIRROR_URL }}
         ssh_private_key:
           ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+
