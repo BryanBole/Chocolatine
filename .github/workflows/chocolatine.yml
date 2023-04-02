@@ -14,22 +14,12 @@ jobs:
   check_coding_style:
     runs-on: ubuntu-latest
     container:
-      image: epitechcontent/epitest-docker:latest
+      image: ghcr.io/epitech/coding-style-checker:latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: |
-          UNWANTED_FILES=$(find . -type f -not -path "./git/*" -wholename "*tmp/*" -or -name "*~" -or -name "*.o" -or -name "*.so" -or -name "*.gcno" -or -name "*.gdca" -or -name "*.gcov" -or -name "*pain_au_chocolat*")
-          for FILES in $UNWANTED_FILES; do
-            echo "::error file=${FILE#./}, title=Unwanted file detected::${FILE#./}"
-          done
-          if [[ -n $UNWANTED_FILES ]]
-          then
-            exit 1
-          else
-            echo No unwanted files detected
-          fi
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run coding style checker
+        run: check.sh $(pwd) $(pwd)
   check_program_compilation:
     needs:
       - check_coding_style
@@ -70,4 +60,3 @@ jobs:
           ${{ env.MIRROR_URL }}
         ssh_private_key:
           ${{ secrets.GIT_SSH_PRIVATE_KEY }}
-
