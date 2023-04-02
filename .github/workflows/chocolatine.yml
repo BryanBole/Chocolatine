@@ -1,5 +1,9 @@
 name: chocolatine
 
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2.4.2
+
 on:
   push:
     branches-ignore:
